@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js",
-    "build": "cd client && npm install && npm run build"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +19,6 @@
     "mongodb": "^4.5.0",
     "mongoose": "^6.3.0",
     "nodemon": "^2.0.15"
-  }
+  },
+  "packageManager": "npm@10.5.2"
 }
