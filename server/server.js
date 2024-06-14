@@ -5,7 +5,14 @@ const cors = require("cors");
 const { default: mongoose } = require("mongoose");
 
 app.use(cors({ origin: true }));
-app.use(express.json());
+app.use(express.json())
+
+const path = require('path')
+app.use(express.static(path.join(__dirname, 'build')))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'))
+})
 
 // user authentication routes
 const userRoute = require("./routes/auth");
@@ -34,11 +41,4 @@ mongoose.connection
     console.log(`Error : ${error}`);
   });
 
-app.listen(4000, () => console.log("Listening to port 4000"));
-
-const path = require('path')
-app.use(express.static(path.join(__dirname, '../client/build')))
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-})
+app.listen(4000, () => console.log("Listening to port 4000"))
